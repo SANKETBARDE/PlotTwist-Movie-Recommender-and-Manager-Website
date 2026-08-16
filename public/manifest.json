@@ -1,0 +1,21 @@
+{
+  "name": "PlotTwist",
+  "short_name": "PlotTwist",
+  "description": "Discover and save movies you love.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#e50914",
+  "icons": [
+    {
+      "src": "/assets/brand/app.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/brand/app512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

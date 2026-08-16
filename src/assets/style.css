@@ -1,0 +1,1067 @@
+/* General Body Style */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #121212;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex-grow: 1;
+}
+
+.text-yellow {
+    color: #ffc107 !important;
+}
+
+h2 {
+    color: #fff;
+}
+
+/* --- Navbar --- */
+/* --- Navbar --- */
+/* --- Navbar --- */
+.navbar {
+    background: rgba(20, 20, 20, 0.75);
+    /* Slightly more opaque for the header */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.8rem 1.5rem;
+    position: sticky;
+    top: 20px;
+    /* Floating offset */
+    z-index: 1000;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+    /* Pill/Floating Island shape */
+    margin: 0 auto 2rem auto;
+    /* Center and add spacing below */
+    max-width: 95%;
+    /* Keep it from touching edges */
+    transition: all 0.3s ease;
+    width: 95%;
+    /* Make width explicit */
+}
+
+/* Navbar Toggler & Link Fixes */
+.navbar-toggler {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link:active {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    background-color: transparent !important;
+    /* Ensure transparent bg on mobile tap */
+}
+
+@media (max-width: 991px) {
+    .navbar {
+        border-radius: 20px;
+        /* Less rounded on mobile for more space */
+        top: 10px;
+        padding: 0.8rem 1rem;
+        width: 98%;
+        /* Enforce width on mobile */
+        max-width: 98%;
+    }
+}
+
+.navbar-brand {
+    height: 30px;
+    /* Slightly bigger logo space */
+    transition: transform 0.3s ease;
+    margin-left: 0;
+}
+
+.navbar-brand img {
+    max-height: 100%;
+    width: auto;
+}
+
+.navbar-brand img:hover {
+    transform: scale(1.1);
+}
+
+/* --- Movie Cards --- */
+/* --- Movie Cards --- */
+.movie-card {
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: var(--glass-border);
+    background: var(--glass-bg-light);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: var(--glass-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.movie-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(255, 193, 7, 0.15);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 193, 7, 0.3);
+}
+
+.movie-card .card-img-top {
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+}
+
+.movie-card .card-body {
+    padding: 0.75rem 0.5rem 1rem 0.5rem;
+    text-align: center;
+}
+
+.movie-card .card-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffc107;
+    margin-bottom: 0;
+}
+
+/* --- Movie Card Link --- */
+.movie-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- Navigation Links & Buttons --- */
+/* --- Navigation Links & Buttons --- */
+/* --- Navigation Links (Minimalist & Cool) --- */
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    margin: 0 5px;
+    position: relative;
+    transition: all 0.3s ease;
+    border: none !important;
+    /* Remove borders */
+    background: transparent !important;
+    /* Remove backgrounds */
+}
+
+/* Hover State - Glow Effect */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #fff !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    background: transparent !important;
+    transform: translateY(-1px);
+}
+
+/* Glowing Dot Indicator */
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    width: 6px;
+    height: 6px;
+    background-color: #ffc107;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ffc107;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    transform: translateX(-50%) scale(1);
+}
+
+/* Remove old button styles inside media query */
+@media (min-width: 992px) {
+    .btn-recommended {
+        border: none !important;
+        background: transparent !important;
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* --- Contact Page Styles --- */
+.contact-title {
+    color: #ffc107;
+    font-weight: 700;
+}
+
+.contact-subtitle {
+    color: #cccccc;
+    font-size: 1.1rem;
+}
+
+.form-title,
+.info-title {
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    color: #cccccc;
+}
+
+/* Glassy Forms */
+.form-control {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #ffc107;
+    color: #ffffff;
+    box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.15);
+}
+
+/* --- Glassy Primary Button (Send Message, etc.) --- */
+.btn-submit {
+    background: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    font-weight: 800;
+    border: 1px solid rgba(255, 193, 7, 0.5);
+    padding: 12px 30px;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.btn-submit:hover {
+    background: #ffc107;
+    color: #000000;
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.6);
+    transform: translateY(-2px);
+    border-color: #ffc107;
+}
+
+.info-block p {
+    color: #cccccc;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.info-block i {
+    color: #ffc107;
+}
+
+/* --- User Reviews Section --- */
+.reviews-section h2 {
+    color: #ffc107;
+}
+
+.reviews-container {
+    max-height: 300px;
+    overflow-y: auto;
+    border: var(--glass-border);
+    border-radius: var(--glass-radius);
+    padding: 1rem;
+    background: var(--glass-bg-dark);
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.review-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 4px solid #ffc107;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.review-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.review-card p {
+    color: #cccccc;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
+
+.review-card footer {
+    color: #ffc107;
+    text-align: right;
+    font-weight: bold;
+}
+
+.reviews-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.reviews-container::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+
+.reviews-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+.reviews-container::-webkit-scrollbar-thumb:hover {
+    background-color: #ffc107;
+}
+
+/* --- About Us Section (Corrected) --- */
+#about-us .about-title,
+#about-us h3 {
+    color: #ffc107;
+}
+
+#about-us p {
+    color: #cccccc;
+    line-height: 1.6;
+}
+
+.about-image {
+    border: 3px solid #ffc107;
+}
+
+.team-card {
+    background: var(--glass-bg-light);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: var(--glass-radius);
+    text-align: center;
+    border-top: 4px solid #ffc107;
+    height: 100%;
+    border-bottom: var(--glass-border);
+    border-left: var(--glass-border);
+    border-right: var(--glass-border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.team-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid #555;
+}
+
+.team-name {
+    color: #ffffff;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.team-title {
+    color: #ffc107;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.team-bio {
+    color: #cccccc;
+    font-size: 0.9rem;
+}
+
+/* --- Wishlist Button --- */
+.movie-card {
+    position: relative;
+}
+
+.wishlist-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    color: #ffc107;
+    width: 40px;
+    /* Slightly larger touch target */
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.wishlist-btn:hover {
+    background: #ffc107;
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.6);
+    transform: rotate(15deg) scale(1.1);
+}
+
+.text-#ffc107 {
+    color: #ffc107 !important;
+}
+
+/* --- Empty Wishlist Message --- */
+.empty-wishlist {
+    margin-top: 3rem;
+    color: #fff;
+}
+
+.empty-wishlist img {
+    max-width: 250px;
+    border-radius: 15px;
+    opacity: 0.8;
+}
+
+.empty-wishlist h4 {
+    color: #ffc107;
+}
+
+.empty-wishlist .btn-warning {
+    background: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    font-weight: 800;
+    border: 1px solid rgba(255, 193, 7, 0.5);
+    border-radius: 50px;
+    padding: 12px 30px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.empty-wishlist .btn-warning:hover {
+    background: #ffc107;
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.6);
+    transform: translateY(-2px);
+    border-color: #ffc107;
+}
+
+/* --- Footer --- */
+.site-footer {
+    background-color: #101010;
+    color: #888888;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.site-footer p {
+    margin-bottom: 0;
+}
+
+/* --- Remove from Wishlist Button --- */
+.remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffc107;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.remove-btn:hover {
+    background-color: #ffc107;
+    color: black;
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+}
+
+/* --- Navbar Search Form --- */
+/* --- Navbar Search Form --- */
+.search-form {
+    position: relative;
+}
+
+.search-form .form-control {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 50px;
+    /* Pill shape */
+    padding-left: 1.2rem;
+    padding-right: 3rem;
+    /* Space for the button if absolute, or just padding */
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.search-form .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-form .form-control:focus {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-color: #ffc107;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.2);
+    transform: scale(1.02);
+}
+
+.search-form .btn {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    color: #ffc107;
+    margin-left: -45px;
+    /* Overlap input */
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.search-form .btn:hover {
+    background: #ffc107;
+    color: #000;
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+
+#details-container {
+    color: #fff;
+}
+
+.movie-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+    opacity: 0.15;
+    z-index: -1;
+}
+
+.details-content {
+    position: relative;
+    padding-top: 5vh;
+}
+
+.movie-poster-details {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 193, 7, 0.5);
+    box-shadow: 0 0 30px rgba(255, 193, 7, 0.15), 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.movie-poster-details:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 40px rgba(255, 193, 7, 0.25), 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.movie-title-details {
+    font-weight: 700;
+    color: #ffc107;
+}
+
+.movie-tagline {
+    font-style: italic;
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Filter & Sort Buttons (Glass Style) --- */
+.btn-outline-warning {
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.4);
+    background: rgba(255, 193, 7, 0.05);
+    backdrop-filter: blur(5px);
+    border-radius: 50px;
+    /* Pill shape */
+    padding: 0.5rem 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-warning:hover,
+.btn-outline-warning:focus,
+.btn-outline-warning:active,
+.btn-outline-warning.show {
+    color: #000 !important;
+    background: #ffc107 !important;
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.4);
+    border-color: #ffc107 !important;
+    transform: translateY(-2px);
+}
+
+/* --- Glass Dropdown Menu --- */
+.dropdown-menu {
+    background: rgba(20, 20, 20, 0.9);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 0.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    margin-top: 10px !important;
+    /* Spacing from button */
+}
+
+/* Fix for broken CSS from previous step */
+.dropdown-item {
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background: rgba(255, 193, 7, 0.15);
+    color: #ffc107;
+    transform: translateX(5px);
+}
+
+/* --- Generic Glass Panel --- */
+.glass-panel {
+    background: var(--glass-bg-dark);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: var(--glass-border);
+    border-radius: var(--glass-radius);
+    padding: 2rem;
+    box-shadow: var(--glass-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    background: rgba(30, 30, 30, 0.7);
+}
+
+.dropdown-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0.5rem 0;
+}
+
+.rating-badge {
+    background: linear-gradient(135deg, #ffc107, #ffdb4d);
+    color: #000;
+    font-weight: 800;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.rating-badge i {
+    margin-right: 5px;
+}
+
+.section-title {
+    color: #ffc107;
+    border-left: 4px solid #ffc107;
+    padding-left: 10px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.genres-list .badge {
+    background-color: #333;
+    color: #ccc;
+    font-size: 0.9rem;
+    padding: 0.5em 0.8em;
+}
+
+.providers-list img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease;
+}
+
+.providers-list img:hover {
+    transform: scale(1.1);
+}
+
+.cast-list .cast-card {
+    text-align: center;
+    color: #ccc;
+}
+
+.cast-list img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+}
+
+.cast-name {
+    font-weight: bold;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.cast-character {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* --- Video Section --- */
+.video-responsive {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+    /* 16:9 Aspect Ratio */
+    height: 0;
+    border-radius: 12px;
+    border: 2px solid #333;
+}
+
+.video-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- Filter Modal --- */
+/* --- Filter Modal --- */
+.modal-content {
+    background-color: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    border-radius: 20px;
+    color: #cccccc;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+}
+
+.modal-title {
+    color: #ffc107;
+}
+
+.btn-close {
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffc107'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    opacity: 0.8;
+    filter: none;
+    /* innovative svg used instead */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btn-close:hover {
+    opacity: 1;
+    transform: rotate(90deg) scale(1.2);
+}
+
+.btn-close:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.modal-body .form-select {
+    background-color: #2a2a2a;
+    color: #cccccc;
+    border-color: #444;
+}
+
+/* --- Filter Modal Styles --- */
+.filter-group {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    max-height: none;
+    /* Let it grow */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 10px;
+    margin-bottom: 2rem;
+    /* ample spacing */
+}
+
+/* Hide default checkbox */
+.filter-group .form-check-input {
+    display: none;
+}
+
+/* Custom Chip Style */
+.filter-group .form-check-label {
+    display: block;
+    text-align: center;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.filter-group .form-check-label:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Checked State (Accessing via sibling selector) */
+.filter-group .form-check-input:checked+.form-check-label {
+    background: #ffc107;
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.4);
+    border-color: #ffc107;
+    font-weight: 700;
+}
+
+.filter-group .form-check {
+    padding: 0;
+    margin: 0;
+}
+
+/* =========================================
+   1. THEME & GLOBAL STYLES
+========================================= */
+
+/* =========================================
+   1. THEME & GLOBAL STYLES
+========================================= */
+
+:root {
+    --theme-yellow: #ffc107;
+    --theme-black: #121212;
+    --theme-text-dark: #212529;
+    --theme-text-light: #f8f9fa;
+    --theme-white: #ffffff;
+
+    /* Apple-like Glass Effect Variables */
+    --glass-bg-dark: rgba(20, 20, 20, 0.65);
+    --glass-bg-light: rgba(255, 255, 255, 0.08);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --glass-blur: blur(12px);
+    --glass-radius: 20px;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    /* Keep font, or strictly use system-ui for Apple feel? Open Sans is fine */
+    background-color: #050505;
+    background-image:
+        radial-gradient(at 0% 0%, rgba(255, 193, 7, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(20, 20, 20, 1) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(255, 193, 7, 0.05) 0px, transparent 50%);
+    background-attachment: fixed;
+    color: var(--theme-text-light);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* =========================================
+   2. NAVIGATION BAR
+========================================= */
+
+/* The SPAN that acts as the circular background for the profile icon */
+.profile-icon-wrapper {
+    display: flex;
+    /* <-- CHANGE THIS to 'flex' */
+    justify-content: center;
+    /* <-- ADD THIS */
+    align-items: center;
+    /* <-- ADD THIS */
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+
+    background-color: var(--theme-yellow);
+    color: var(--theme-black);
+    /* Sets the icon's color */
+}
+
+.profile-icon-wrapper .bi {
+    font-size: 1.5rem;
+}
+
+/* Hover state for the profile link/icon */
+#profile-link:hover .profile-icon-wrapper {
+    background-color: var(--theme-black);
+    color: var(--theme-yellow);
+    border: 1px solid var(--theme-yellow);
+}
+
+#profile-link:hover {
+    color: var(--theme-yellow);
+}
+
+/* =========================================
+   3. PROFILE PAGE
+========================================= */
+
+/* Main card container */
+/* Main card container */
+.profile-info-card {
+    background: var(--glass-bg-dark);
+    backdrop-filter: blur(15px);
+    border: var(--glass-border);
+    border-radius: var(--glass-radius);
+    text-align: center;
+    /* Centers the buttons */
+    box-shadow: var(--glass-shadow);
+    padding: 2rem;
+}
+
+.profile-info-card h3 {
+    color: var(--theme-yellow);
+    border-bottom: 2px solid var(--theme-yellow);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Form labels ("Email", "Full Name", etc.) */
+.profile-info-card .form-label {
+    color: #ffc107;
+    font-weight: 500;
+    text-align: left;
+    display: block;
+}
+
+/* Input fields */
+.profile-info-card .form-control {
+    background-color: #2a2a2a;
+    color: var(--theme-text-light);
+    border: 1px solid #444;
+}
+
+/* Yellow glow on focus */
+.profile-info-card .form-control:focus {
+    background-color: #2a2a2a;
+    color: var(--theme-text-light);
+    border-color: var(--theme-yellow);
+    box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+}
+
+/* Disabled email field */
+.profile-info-card .form-control:disabled {
+    background-color: #1c1c1c;
+    color: #777;
+}
+
+/* "Save Changes" button base style */
+#save-changes-btn {
+    width: 100%;
+    padding: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 1px solid #ffc107;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* "Save Changes" inactive state */
+#save-changes-btn.is-inactive {
+    background-color: #121212;
+    color: #ffc107;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* "Save Changes" active state */
+#save-changes-btn:not(.is-inactive) {
+    background-color: #ffc107;
+    color: #121212;
+    cursor: pointer;
+}
+
+#save-changes-btn:not(.is-inactive):hover {
+    opacity: 0.9;
+}
+
+/* "Log Out" button */
+#logout-btn.btn-outline-danger {
+    color: #e57373;
+    border-color: #e57373;
+}
+
+#logout-btn.btn-outline-danger:hover {
+    color: var(--theme-white);
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+/* =========================================
+   4. GENERAL COMPONENTS
+========================================= */
+
+.login-container {
+    background: var(--glass-bg-dark);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: var(--glass-border);
+    border-radius: var(--glass-radius);
+    max-width: 400px;
+    width: 100%;
+    padding: 2rem;
+    box-shadow: var(--glass-shadow);
+}
+
+/* A reusable button style (currently unused but good to keep) */
+.btn-profile {
+    background-color: var(--theme-yellow);
+    color: var(--theme-text-dark);
+    border: 1px solid var(--theme-yellow);
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-profile:hover {
+    background-color: var(--theme-black);
+    color: var(--theme-white);
+    border: 1px solid var(--theme-yellow);
+}

@@ -414,10 +414,10 @@ h2 {
 }
 
 .wishlist-btn:hover {
-    background: #ffc107;
-    color: #000;
-    box-shadow: 0 0 15px rgba(255, 193, 7, 0.6);
-    transform: rotate(15deg) scale(1.1);
+    background: rgba(255, 193, 7, 0.15);
+    color: #ffc107;
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.4);
+    transform: scale(1.05);
 }
 
 .text-#ffc107 {
@@ -1064,4 +1064,140 @@ body {
     background-color: var(--theme-black);
     color: var(--theme-white);
     border: 1px solid var(--theme-yellow);
+}
+/* =========================================
+   5. LANDING & SIGN IN PAGE UI
+========================================= */
+.landing-container {
+    min-height: 80vh;
+}
+.landing-hero {
+    max-width: 800px;
+    padding: 3rem;
+}
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+}
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #ccc;
+    line-height: 1.6;
+}
+.feature-item {
+    text-align: center;
+}
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+.landing-navbar {
+    padding: 1rem 2rem;
+}
+.signin-container {
+    min-height: 80vh;
+}
+.signin-card {
+    max-width: 450px;
+    width: 100%;
+}
+.btn-google-signin {
+    background-color: #fff;
+    color: #444;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-google-signin:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* =========================================
+   6. PREMIUM NAVBAR UI
+========================================= */
+.premium-navbar {
+    background: rgba(15, 15, 15, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    margin-bottom: 2rem;
+    border-radius: 0;
+}
+.premium-nav-link {
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    position: relative;
+    transition: color 0.3s ease;
+}
+.premium-nav-link:hover, .premium-nav-link.active {
+    color: #fff !important;
+    text-shadow: none;
+}
+.premium-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #ffc107;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+.premium-nav-link:hover::after, .premium-nav-link.active::after {
+    width: 80%;
+}
+.search-input-group {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+.search-input-group .input-group-text {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    padding-left: 1rem;
+}
+.search-input-group .form-control {
+    background: transparent;
+    border: none;
+    color: #fff;
+    box-shadow: none !important;
+    padding-left: 0.5rem;
+}
+.search-input-group:focus-within {
+    border-color: #ffc107;
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.2);
+}
+.profile-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: border-color 0.3s ease;
+}
+.profile-img:hover {
+    border-color: #ffc107;
+}
+.dropdown-toggle-hide-arrow::after {
+    display: none !important;
+}
+.glass-dropdown {
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }

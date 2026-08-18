@@ -10,7 +10,6 @@ export default function MovieCard({ movie, isWishlisted, onToggleWishlist }) {
     }
 
     const posterUrl = posterPath.startsWith('https') ? posterPath : `${imgBaseUrl}${posterPath}`;
-    const wishlistedClass = isWishlisted ? 'wishlisted' : '';
     const iconClass = isWishlisted ? 'bi-heart-fill' : 'bi-heart';
 
     const handleWishlistClick = (e) => {
@@ -22,22 +21,27 @@ export default function MovieCard({ movie, isWishlisted, onToggleWishlist }) {
     };
 
     return (
-        <div className="col-6 col-md-4 col-lg-2 mb-4">
-            <Link to={`/movie-details?id=${movie.id}`} className="movie-card-link">
-                <div className="movie-card">
-                    <button 
-                        className={`wishlist-btn ${wishlistedClass}`} 
-                        onClick={handleWishlistClick}
-                        data-movie-id={movie.id}
-                    >
-                        <i className={`bi ${iconClass}`}></i>
-                    </button>
-                    <img src={posterUrl} className="card-img-top" alt={movie.title} />
-                    <div className="card-body">
-                        <h6 className="card-title">{movie.title}</h6>
+        <Link to={`/movie-details?id=${movie.id}`} className="movie-card">
+            <div className="movie-poster-container">
+                <img src={posterUrl} className="movie-poster" alt={movie.title} />
+                <div className="movie-overlay">
+                    <div className="movie-title">{movie.title}</div>
+                    <div className="movie-meta">
+                        <span>{movie.release_date ? movie.release_date.substring(0, 4) : ''}</span>
+                        <div className="movie-rating">
+                            <i className="bi bi-star-fill"></i>
+                            {movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'}
+                        </div>
                     </div>
                 </div>
-            </Link>
-        </div>
+            </div>
+            <button 
+                className={`wishlist-btn ${isWishlisted ? 'active' : ''}`} 
+                onClick={handleWishlistClick}
+                title={isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
+            >
+                <i className={`bi ${iconClass}`}></i>
+            </button>
+        </Link>
     );
 }

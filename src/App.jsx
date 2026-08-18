@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import LandingNavbar from './components/LandingNavbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -9,8 +10,12 @@ import MovieDetails from './pages/MovieDetails';
 import Recommended from './pages/Recommended';
 import Search from './pages/Search';
 import Wishlist from './pages/Wishlist';
+import Landing from './pages/Landing';
+import SignIn from './pages/SignIn';
+import Onboarding from './pages/Onboarding';
+import Profile from './pages/Profile';
+import { useAuth } from './context/AuthContext';
 
-// Component to scroll to top on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -22,20 +27,66 @@ function ScrollToTop() {
 }
 
 function App() {
+  const { user, userProfile } = useAuth();
+
+  if (!user) {
+      return (
+          <Router>
+              <ScrollToTop />
+              <div className="d-flex flex-column min-vh-100">
+                  <LandingNavbar />
+                  <div className="main-content d-flex flex-column flex-grow-1">
+                      <Routes>
+                          <Route path="/" element={<Landing />} />
+                          <Route path="/signin" element={<SignIn />} />
+                          <Route path="*" element={<Navigate to="/" replace />} />
+                      </Routes>
+                  </div>
+                  <Footer />
+              </div>
+          </Router>
+      );
+  }
+
+  // Intercept user if they haven't completed their profile
+  if (!userProfile?.isProfileComplete) {
+      return (
+          <Router>
+              <ScrollToTop />
+              <div className="d-flex flex-column min-vh-100">
+                  <Navbar />
+                  <div className="main-content d-flex flex-column flex-grow-1">
+                      <Routes>
+                          <Route path="/onboarding" element={<Onboarding />} />
+                          <Route path="*" element={<Navigate to="/onboarding" replace />} />
+                      </Routes>
+                  </div>
+                  <Footer />
+              </div>
+          </Router>
+      );
+  }
+
   return (
     <Router>
       <ScrollToTop />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/movie-details" element={<MovieDetails />} />
-        <Route path="/recommended" element={<Recommended />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-      </Routes>
-      <Footer />
+      <div className="d-flex flex-column min-vh-100">
+          <Navbar />
+          <div className="main-content d-flex flex-column flex-grow-1">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/movie-details" element={<MovieDetails />} />
+                <Route path="/recommended" element={<Recommended />} />
+                <Route path="/search" element={<Search />} />
+                <Route path="/wishlist" element={<Wishlist />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+          </div>
+          <Footer />
+      </div>
     </Router>
   );
 }

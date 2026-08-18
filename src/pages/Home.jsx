@@ -3,6 +3,7 @@ import { fetchPopularMovies } from '../services/tmdb';
 import MovieCard from '../components/MovieCard';
 import FilterModal from '../components/FilterModal';
 import { useWishlist } from '../hooks/useWishlist';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 export default function Home() {
     const [movies, setMovies] = useState([]);
@@ -80,19 +81,19 @@ export default function Home() {
     }
 
     return (
-        <section className="container-fluid my-5" id="movie-grid">
-            <div className="d-flex justify-content-between align-items-center mb-4">
-                <h2 className="text-yellow mb-0">All Movies</h2>
-                <div className="d-flex">
-                    <button className="btn btn-outline-warning me-2" type="button" data-bs-toggle="modal" data-bs-target="#filterModal">
-                        <i className="bi bi-funnel-fill"></i> Filter
+        <section className="container page-wrapper movie-grid-section">
+            <div className="section-header">
+                <h2 className="section-title">Trending Now</h2>
+                <div className="header-actions">
+                    <button className="btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#filterModal">
+                        <i className="bi bi-funnel"></i> Filter
                     </button>
                     <div className="dropdown">
-                        <button className="btn btn-outline-warning dropdown-toggle" type="button" id="sortMenuButton"
+                        <button className="btn-secondary dropdown-toggle" type="button" id="sortMenuButton"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Sort By
                         </button>
-                        <ul className="dropdown-menu" aria-labelledby="sortMenuButton">
+                        <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="sortMenuButton">
                             <li><button className="dropdown-item" onClick={() => setSort('title-asc')}>Title (A-Z)</button></li>
                             <li><button className="dropdown-item" onClick={() => setSort('title-desc')}>Title (Z-A)</button></li>
                             <li><button className="dropdown-item" onClick={() => setSort('date-desc')}>Release Date (Newest)</button></li>
@@ -103,7 +104,8 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="row g-4" id="movies-row">
+            
+            <div className="movie-grid animate-fade-in-up">
                 {displayedMovies.length > 0 ? (
                     displayedMovies.map(movie => (
                         <MovieCard 
@@ -114,10 +116,13 @@ export default function Home() {
                         />
                     ))
                 ) : (
-                    <p className="text-white">Sorry, no movies found.</p>
+                    <p className="text-secondary text-center w-full">Sorry, no movies found.</p>
                 )}
             </div>
-            {isLoading && <div className="text-center text-white mt-4">Loading more movies...</div>}
+
+            {isLoading && (
+                <LoadingSpinner />
+            )}
             
             <FilterModal currentFilters={filters} onApplyFilters={setFilters} />
         </section>

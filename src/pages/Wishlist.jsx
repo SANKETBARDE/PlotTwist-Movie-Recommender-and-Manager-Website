@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchMovieDetails } from '../services/tmdb';
 import MovieCard from '../components/MovieCard';
 import { useWishlist } from '../hooks/useWishlist';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 export default function Wishlist() {
     const [movies, setMovies] = useState([]);
@@ -10,33 +11,31 @@ export default function Wishlist() {
 
     useEffect(() => {
         const loadWishlistMovies = async () => {
-            setIsLoading(true);
-            const userWishlistStr = localStorage.getItem('plottwist_wishlist');
-            const userWishlist = userWishlistStr ? JSON.parse(userWishlistStr) : [];
-            
-            if (userWishlist.length === 0) {
+            if (wishlist.length === 0) {
                 setMovies([]);
                 setIsLoading(false);
                 return;
             }
 
-            const fetchPromises = userWishlist.map(id => fetchMovieDetails(id));
+            setIsLoading(true);
+            const fetchPromises = wishlist.map(id => fetchMovieDetails(id));
             const results = await Promise.all(fetchPromises);
             // Filter out nulls in case some fetches fail
             setMovies(results.filter(m => m !== null));
             setIsLoading(false);
         };
         loadWishlistMovies();
-    }, [wishlist.length]); // Re-fetch or update when wishlist length changes
+    }, [wishlist.join(',')]); // Use join to prevent unnecessary re-fetches if the array reference changes but the content is the same
 
     return (
-        <section className="container my-5" id="movie-grid">
-            <div className="d-flex justify-content-between align-items-center mb-4">
-                <h2 className="text-yellow mb-0">My Wishlist</h2>
+        <section className="container page-wrapper movie-grid-section">
+            <div className="section-header">
+                <h2 className="section-title">My Wishlist</h2>
             </div>
-            <div className="row g-4" id="movies-row">
+            
+            <div className="movie-grid animate-fade-in-up">
                 {isLoading ? (
-                    <div className="text-center text-white w-100">Loading...</div>
+                    <LoadingSpinner />
                 ) : movies.length > 0 ? (
                     movies.map(movie => (
                         <MovieCard 
@@ -47,7 +46,15 @@ export default function Wishlist() {
                         />
                     ))
                 ) : (
-                    <p className="text-white w-100">Your wishlist is empty. Browse movies and click the heart icon to add them here!</p>
+                    <div style={{ gridColumn: '1 / -1', minHeight: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                        <img 
+                            src="https://media1.tenor.com/m/X2t_A2MdSW0AAAAC/tork-peter.gif" 
+                            alt="Empty Wishlist" 
+                            style={{ width: '250px', borderRadius: '0', marginBottom: '1.5rem', border: '1px solid var(--border-color)', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}
+                        />
+                        <h2 className="text-gradient-gold mt-2" style={{ fontSize: '2.5rem', fontWeight: '800' }}>Don't be boring.</h2>
+                        <h3 className="text-gradient-gold" style={{ fontSize: '1.5rem', opacity: '0.9' }}>Go watch something.</h3>
+                    </div>
                 )}
             </div>
         </section>

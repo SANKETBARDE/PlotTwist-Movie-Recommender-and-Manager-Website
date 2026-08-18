@@ -2,57 +2,52 @@ import React from 'react';
 
 export default function About() {
     return (
-        <section id="about-us" className="container my-5">
-            <div className="row">
-                <div className="col-12 text-center mb-5">
-                    <h2 className="about-title">About Us</h2>
-                </div>
+        <section className="container page-wrapper animate-fade-in-up">
+            <div className="page-header">
+                <h1 className="page-title">About Us</h1>
             </div>
-            <div className="row align-items-start">
-                <div className="col-lg-6 mb-4">
-                    <div className="glass-panel h-100 d-flex align-items-center justify-content-center p-3">
+            
+            <div className="about-grid">
+                <div>
+                    <div className="glass-panel content-panel flex items-center justify-center p-4">
                         <img src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?q=80&w=1931"
-                            className="img-fluid rounded about-image w-100" style={{ border: 'none' }} alt="Cinema seats" />
+                            style={{ width: '100%', borderRadius: '12px', objectFit: 'cover' }} alt="Cinema seats" />
                     </div>
                 </div>
-                <div className="col-lg-6 mb-4">
-                    <div className="glass-panel h-100">
-                        <h3 className="text-yellow mb-3">Our Mission</h3>
-                        <p>
+                <div>
+                    <div className="glass-panel content-panel">
+                        <h3 className="text-gradient-gold mb-4" style={{ fontSize: '2rem' }}>Our Mission</h3>
+                        <p className="mb-4 text-secondary" style={{ fontSize: '1.1rem' }}>
                             At PlotTwist, our core mission is simple: to make sure you never forget a movie you wanted to
-                            watch.
-                            We all know the frustration of scrolling through endless titles, trying to remember that one
-                            film
-                            you saw a trailer for weeks ago.
-                            PlotTwist is built to be your personal cinematic memory—a place where every intriguing discovery
-                            is
-                            saved instantly to your wishlist, ready for your next movie night.
+                            watch. We all know the frustration of scrolling through endless titles, trying to remember that one
+                            film you saw a trailer for weeks ago.
                         </p>
-                        <p>
+                        <p className="mb-4 text-secondary" style={{ fontSize: '1.1rem' }}>
+                            PlotTwist is built to be your personal cinematic memory—a place where every intriguing discovery
+                            is saved instantly to your wishlist, ready for your next movie night.
+                        </p>
+                        <p className="text-secondary" style={{ fontSize: '1.1rem' }}>
                             By combining smart discovery with an effortless wishlist system, we ensure that the films which
                             spark your interest today are the ones you enjoy tomorrow.
                         </p>
                     </div>
                 </div>
             </div>
-            <div className="row mt-5 justify-content-center">
-                <div className="col-12 text-center mb-4">
-                    <h3>Meet the Creator</h3>
-                </div>
-                <div className="col-md-8 col-lg-6 mb-4">
-                    <div className="team-card">
-                        <img src="assets/dev/sanket.png" className="team-photo" alt="Team member photo" />
-                        <h5 className="team-name">Sanket Barde</h5>
-                        <p className="team-title">Founder</p>
-                        <p className="team-bio">
-                            Sanket Barde is the Founder and Lead Developer of PlotTwist, architecting the platform from the
-                            ground up. Based in Bangalore, he blends technical expertise in web development with a
-                            deep love for cinema. Sanket is committed to delivering a fast, smart, and seamless experience
-                            that takes the guesswork out of movie discovery. His dedication drives continuous improvements
-                            to ensure PlotTwist remains the most efficient and enjoyable way to explore films.
-                        </p>
-                    </div>
-                </div>
+            
+            <div className="page-header mt-8">
+                <h2 className="page-title">Meet the Creator</h2>
+            </div>
+            
+            <div className="team-card glass-panel mb-8">
+                <img src="/assets/dev/sanket.png" className="team-photo" alt="Sanket Barde" onError={(e) => { e.target.src = 'https://ui-avatars.com/api/?name=Sanket+Barde&background=f5c518&color=000&size=150' }} />
+                <h3 className="text-gradient-gold" style={{ fontSize: '1.8rem' }}>Sanket Barde</h3>
+                <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', fontWeight: '500' }}>Founder & Lead Developer</p>
+                <p style={{ color: 'var(--text-tertiary)' }}>
+                    Sanket Barde is the Founder and Lead Developer of PlotTwist, architecting the platform from the
+                    ground up. Based in Bangalore, he blends technical expertise in web development with a
+                    deep love for cinema. Sanket is committed to delivering a fast, smart, and seamless experience
+                    that takes the guesswork out of movie discovery.
+                </p>
             </div>
         </section>
     );

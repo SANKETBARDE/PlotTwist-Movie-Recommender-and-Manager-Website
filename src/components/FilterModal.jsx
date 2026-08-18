@@ -48,35 +48,37 @@ export default function FilterModal({ currentFilters, onApplyFilters }) {
     };
 
     return (
-        <div className="modal fade" id="filterModal" tabIndex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
-            <div className="modal-dialog">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title" id="filterModalLabel">Filter Movies</h5>
+        <div className="modal fade" id="filterModal" tabIndex="-1" aria-hidden="true" data-bs-theme="dark">
+            <div className="modal-dialog modal-dialog-centered">
+                <div className="modal-content glass-panel" style={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)' }}>
+                    <div className="modal-header border-bottom border-secondary">
+                        <h5 className="modal-title text-gradient-gold">Filter Movies</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div className="modal-body">
-                        <h6>By Genre</h6>
-                        <div className="filter-group mb-3" id="genre-filters">
+                    <div className="modal-body custom-scrollbar" style={{ maxHeight: '60vh', overflowY: 'auto' }}>
+                        <h6 className="mb-3 text-secondary">By Genre</h6>
+                        <div className="row g-2 mb-4">
                             {genres.map(genre => (
-                                <div className="form-check" key={genre.id}>
-                                    <input 
-                                        className="form-check-input" 
-                                        type="checkbox" 
-                                        id={`genre-${genre.id}`} 
-                                        value={genre.id} 
-                                        checked={selectedGenres.includes(genre.id)}
-                                        onChange={() => handleGenreChange(genre.id)}
-                                    />
-                                    <label className="form-check-label w-100" htmlFor={`genre-${genre.id}`}>
-                                        {genre.name}
-                                    </label>
+                                <div className="col-6" key={genre.id}>
+                                    <div className="form-check custom-checkbox">
+                                        <input 
+                                            className="form-check-input" 
+                                            type="checkbox" 
+                                            id={`genre-${genre.id}`} 
+                                            value={genre.id} 
+                                            checked={selectedGenres.includes(genre.id)}
+                                            onChange={() => handleGenreChange(genre.id)}
+                                        />
+                                        <label className="form-check-label w-100" htmlFor={`genre-${genre.id}`}>
+                                            {genre.name}
+                                        </label>
+                                    </div>
                                 </div>
                             ))}
                         </div>
-                        <h6>By Language</h6>
+                        <h6 className="mb-3 text-secondary">By Language</h6>
                         <select 
-                            className="form-select" 
+                            className="form-select bg-dark text-light border-secondary" 
                             id="language-filter"
                             value={selectedLanguage}
                             onChange={(e) => setSelectedLanguage(e.target.value)}
@@ -89,9 +91,9 @@ export default function FilterModal({ currentFilters, onApplyFilters }) {
                             ))}
                         </select>
                     </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" onClick={handleClear}>Clear Filters</button>
-                        <button type="button" className="btn btn-warning" onClick={handleApply}>Apply Filters</button>
+                    <div className="modal-footer border-top border-secondary">
+                        <button type="button" className="btn-secondary" onClick={handleClear}>Clear</button>
+                        <button type="button" className="btn-primary" onClick={handleApply}>Apply Filters</button>
                     </div>
                 </div>
             </div>

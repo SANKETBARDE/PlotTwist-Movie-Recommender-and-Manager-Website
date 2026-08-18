@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchTopRatedMovies, fetchRecommendations } from '../services/tmdb';
 import MovieCard from '../components/MovieCard';
 import { useWishlist } from '../hooks/useWishlist';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 export default function Recommended() {
     const [movies, setMovies] = useState([]);
@@ -33,13 +34,15 @@ export default function Recommended() {
     }, []);
 
     return (
-        <section className="container my-5" id="movie-grid">
-            <h2 className="text-yellow mb-4 text-center">
-                {movies.length > 0 ? "Recommended for You" : "Loading Recommendations..."}
-            </h2>
-            <div className="row g-4" id="movies-row">
+        <section className="container page-wrapper movie-grid-section">
+            <div className="section-header justify-center mb-8">
+                <h2 className="section-title text-center text-gradient-gold">
+                    {movies.length > 0 ? "Recommended for You" : isLoading ? "" : "No Recommendations"}
+                </h2>
+            </div>
+            <div className="movie-grid animate-fade-in-up">
                 {isLoading ? (
-                    <div className="text-center text-white w-100">Loading...</div>
+                    <LoadingSpinner />
                 ) : (
                     movies.map(movie => (
                         <MovieCard 

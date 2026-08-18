@@ -35,7 +35,7 @@ function App() {
               <ScrollToTop />
               <div className="d-flex flex-column min-vh-100">
                   <LandingNavbar />
-                  <div className="main-content d-flex flex-column flex-grow-1">
+                  <div className="main-content d-flex flex-column grow">
                       <Routes>
                           <Route path="/" element={<Landing />} />
                           <Route path="/signin" element={<SignIn />} />
@@ -55,7 +55,7 @@ function App() {
               <ScrollToTop />
               <div className="d-flex flex-column min-vh-100">
                   <Navbar />
-                  <div className="main-content d-flex flex-column flex-grow-1">
+                  <div className="main-content d-flex flex-column grow">
                       <Routes>
                           <Route path="/onboarding" element={<Onboarding />} />
                           <Route path="*" element={<Navigate to="/onboarding" replace />} />
@@ -72,7 +72,7 @@ function App() {
       <ScrollToTop />
       <div className="d-flex flex-column min-vh-100">
           <Navbar />
-          <div className="main-content d-flex flex-column flex-grow-1">
+          <div className="main-content d-flex flex-column grow">
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />

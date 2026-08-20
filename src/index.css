@@ -1162,6 +1162,7 @@ a:hover {
   /* Forms */
   .auth-panel {
     padding: 1.5rem !important;
+    width: calc(100% - 2rem) !important;
   }
   
   /* Grids (2 per row for mobile) */

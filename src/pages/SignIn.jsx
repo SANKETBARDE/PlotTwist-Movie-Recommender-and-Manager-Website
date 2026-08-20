@@ -39,7 +39,7 @@ export default function SignIn() {
                     alignItems: 'center',
                     textAlign: 'center'
                 }}>
-                    <img src="/assets/brand/logo.png" alt="PlotTwist" style={{ maxWidth: '200px', margin: '0 auto 2.5rem', display: 'block' }} />
+                    <img src="/assets/brand/logo.png" alt="PlotTwist" style={{ maxWidth: '64px', margin: '0 auto 2.5rem', display: 'block' }} />
                     <h2 className="text-gradient-gold" style={{ fontSize: '2.2rem', marginBottom: '1rem', fontWeight: 800 }}>Welcome Back</h2>
                     <p className="text-secondary" style={{ marginBottom: '2.5rem', fontSize: '1.05rem', lineHeight: 1.6 }}>
                         Sign in to save your favorite movies, track your watchlist, and get personalized recommendations.

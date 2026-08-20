@@ -26,6 +26,9 @@ export function AuthProvider({ children }) {
     let unsubscribeSnapshot = null;
 
     const unsubscribeAuth = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser && !userProfile) {
+        setLoading(true);
+      }
       setUser(currentUser);
       
       if (currentUser) {

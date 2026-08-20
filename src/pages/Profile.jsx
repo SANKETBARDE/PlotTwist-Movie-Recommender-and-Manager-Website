@@ -45,26 +45,51 @@ export default function Profile() {
         }
     };
 
+    const handleDeleteAccount = async () => {
+        const confirmDelete = window.confirm(
+            "Are you sure you want to delete your account? Your data will be permanently deleted after 30 days. Logging back in before then will cancel the deletion."
+        );
+        if (!confirmDelete) return;
+
+        try {
+            const userRef = doc(db, 'users', user.uid);
+            const scheduledDate = Date.now() + (30 * 24 * 60 * 60 * 1000);
+            
+            await setDoc(userRef, {
+                scheduledDeletionDate: scheduledDate
+            }, { merge: true });
+            
+            await logout();
+        } catch (error) {
+            console.error("Error scheduling account deletion", error);
+            alert("Failed to schedule account deletion. Please try again.");
+        }
+    };
+
     return (
-        <div className="page-wrapper animate-fade-in-up" style={{ padding: '4rem 1rem', marginTop: '80px', flexGrow: 1 }}>
+        <div className="page-wrapper animate-fade-in-up profile-page-wrapper" style={{ padding: '4rem 1rem', marginTop: '80px', flexGrow: 1 }}>
             <div className="container">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+                <div className="profile-top-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
                     <h1 className="section-title" style={{ margin: 0 }}>My Profile</h1>
                     {!isEditing && (
-                        <button onClick={() => setIsEditing(true)} className="btn-secondary" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: 'fit-content', padding: '0.5rem 1.5rem' }}>
+                        <button onClick={() => setIsEditing(true)} className="btn-secondary edit-profile-btn" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: 'fit-content', padding: '0.5rem 1.5rem' }}>
                             <i className="bi bi-pencil" style={{ marginRight: '0.5rem' }}></i> Edit Profile
                         </button>
                     )}
                 </div>
 
-                <div style={{ width: '100%', maxWidth: '800px', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                <div className="profile-content-container" style={{ width: '100%', maxWidth: '800px', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                     
                     {/* Top Section - Profile Summary */}
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', textAlign: 'left' }}>
+                    <div className="profile-summary" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', textAlign: 'left' }}>
                         <div style={{ position: 'relative', marginBottom: '1.5rem' }}>
                             <img 
-                                src={user?.photoURL || 'https://via.placeholder.com/150'} 
+                                src={user?.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(userProfile?.username || user?.displayName || 'Cinephile')}&background=random`} 
                                 alt="Profile" 
+                                onError={(e) => {
+                                    e.target.onerror = null;
+                                    e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(userProfile?.username || user?.displayName || 'Cinephile')}&background=random`;
+                                }}
                                 style={{ width: '120px', height: '120px', borderRadius: '50%', border: '3px solid var(--accent-gold)', objectFit: 'cover', boxShadow: '0 10px 25px rgba(0,0,0,0.5)' }}
                             />
                         </div>
@@ -161,6 +186,15 @@ export default function Profile() {
                                     ) : (
                                         <p style={{ color: 'var(--text-tertiary)' }}>No favorite genres selected.</p>
                                     )}
+                                </div>
+
+                                <div className="sign-out-container" style={{ marginTop: '3rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem', display: 'flex', justifyContent: 'flex-start', gap: '1rem', flexWrap: 'wrap' }}>
+                                    <button onClick={logout} className="btn-secondary sign-out-btn" style={{ width: 'fit-content', padding: '0.75rem 2rem' }}>
+                                        <i className="bi bi-box-arrow-right" style={{ marginRight: '0.5rem' }}></i> Sign Out
+                                    </button>
+                                    <button onClick={handleDeleteAccount} className="btn-secondary sign-out-btn glass-danger" style={{ width: 'fit-content', padding: '0.75rem 2rem', border: 'none' }}>
+                                        <i className="bi bi-trash3" style={{ marginRight: '0.5rem' }}></i> Delete Account
+                                    </button>
                                 </div>
                             </div>
                         )}

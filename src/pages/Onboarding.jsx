@@ -79,8 +79,12 @@ export default function Onboarding() {
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', textAlign: 'left' }}>
                         <div style={{ position: 'relative', marginBottom: '1.5rem' }}>
                             <img 
-                                src={user?.photoURL || 'https://via.placeholder.com/150'} 
+                                src={user?.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.displayName || user?.email || 'User')}&background=random`} 
                                 alt="Profile" 
+                                onError={(e) => {
+                                    e.target.onerror = null;
+                                    e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.displayName || user?.email || 'User')}&background=random`;
+                                }}
                                 style={{ width: '120px', height: '120px', borderRadius: '50%', border: '3px solid var(--accent-gold)', objectFit: 'cover', boxShadow: '0 10px 25px rgba(0,0,0,0.5)' }}
                             />
                         </div>

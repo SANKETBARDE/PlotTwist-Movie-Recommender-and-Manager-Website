@@ -5,16 +5,12 @@ import './index.css'
 import './assets/style.css'
 import { AuthProvider } from './context/AuthContext.jsx'
 
-// Register Service Worker
+// Unregister any existing Service Workers
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(registration => {
-        console.log('Service Worker registered successfully!');
-      })
-      .catch(err => {
-        console.log('Service Worker registration failed: ', err);
-      });
+  navigator.serviceWorker.getRegistrations().then(registrations => {
+    for (let registration of registrations) {
+      registration.unregister();
+    }
   });
 }
 

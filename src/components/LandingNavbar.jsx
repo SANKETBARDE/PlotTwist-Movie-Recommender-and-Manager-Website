@@ -12,11 +12,11 @@ export default function LandingNavbar() {
                     </span>
                 </Link>
                 
-                <div className="flex items-center gap-4">
-                    <Link to="/signin" className="btn-secondary">
+                <div className="d-none d-md-flex align-items-center gap-3">
+                    <Link to="/signin" className="btn-secondary" style={{ padding: '0.4rem 1rem', fontSize: '0.875rem' }}>
                         Sign In
                     </Link>
-                    <Link to="/signin" className="btn-primary" style={{ padding: '0.6rem 1.5rem' }}>
+                    <Link to="/signin?mode=signup" className="btn-primary" style={{ padding: '0.4rem 1rem', fontSize: '0.875rem' }}>
                         Get Started
                     </Link>
                 </div>

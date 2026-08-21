@@ -14,6 +14,8 @@ import Landing from './pages/Landing';
 import SignIn from './pages/SignIn';
 import Onboarding from './pages/Onboarding';
 import Profile from './pages/Profile';
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
 import { useAuth } from './context/AuthContext';
 
 function ScrollToTop() {
@@ -39,6 +41,8 @@ function App() {
                       <Routes>
                           <Route path="/" element={<Landing />} />
                           <Route path="/signin" element={<SignIn />} />
+                          <Route path="/terms" element={<Terms />} />
+                          <Route path="/privacy" element={<Privacy />} />
                           <Route path="*" element={<Navigate to="/" replace />} />
                       </Routes>
                   </div>
@@ -58,6 +62,8 @@ function App() {
                   <div className="main-content d-flex flex-column grow">
                       <Routes>
                           <Route path="/onboarding" element={<Onboarding />} />
+                          <Route path="/terms" element={<Terms />} />
+                          <Route path="/privacy" element={<Privacy />} />
                           <Route path="*" element={<Navigate to="/onboarding" replace />} />
                       </Routes>
                   </div>
@@ -82,6 +88,8 @@ function App() {
                 <Route path="/search" element={<Search />} />
                 <Route path="/wishlist" element={<Wishlist />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/terms" element={<Terms />} />
+                <Route path="/privacy" element={<Privacy />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
           </div>
